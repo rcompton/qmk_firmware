@@ -1,11 +1,51 @@
 // based on https://github.com/devgony/qmk_firmware/blob/9dc7e8aba6688667674db4f4d3c61d5860cce1ee/keyboards/gmmk/gmmk2/p65/config.h#L40
 
+// Don't worry about memory usage, it's fine
+//
+// Example output from flashing in QMK Toolbox:
+//
+// B32 DFU device connected: Westberry Tech. WB Device in DFU Mode (342D:DFA0:0100)
+// Attempting to flash, please don't remove device
+// > wb32-dfu-updater_cli --toolbox-mode --dfuse-address 0x08000000 --download /Users/rbox/qmk_firmware/gmmk_gmmk2_p65_ansi_rcompton.bin
+// > ----------------------------------------
+// > /Users/rbox/qmk_firmware/gmmk_gmmk2_p65_ansi_rcompton.bin file opened
+// > ----------------------------------------
+// > Found DFU
+// > Opening DFU capable USB device ...
+// > Device ID 342d:dfa0
+// > ----------------------------------------
+// > The device bootloader version: 0.3
+// > Chip id: 0x3A50A980
+// > Flash size: 128 KBytes
+// > Sram size: 28 KBytes
+// > ----------------------------------------
+// > Start Download ...
+// > Download block start address: 0x08000000
+// > Download block size: 46432 Bytes
+// > Writing ...
+// > OK
+// > Download completed!
+// Flash complete
+// > wb32-dfu-updater_cli --reset
+//
+// Gemini's comments on the above:
+//
+// Yes, that output confirms several important things, and it means you have a good amount of flexibility for adding QMK features:
+// Key Information from the Output:
+// Flash size: 128 KBytes: This is the crucial piece of information. Your GMMK 2's microcontroller has 128KB of flash memory. This is the total amount of space available for storing the compiled QMK firmware.
+// Download block size: 46432 Bytes: This shows that your current compiled firmware is using 46432 bytes (about 45.3KB) of that 128KB. This means you have plenty of space remaining.
+// Download completed! Flash complete: This confirms that the firmware flashed successfully.
+// WB32F...: This indicates the microcontroller.
+// What This Means for You:
+// Plenty of Space: You have a significant amount of free space in flash memory (128KB - 45.3KB = ~82.7KB).  This means you can add many more QMK features without running out of space.
+// RGB Modes: You can enable all the ENABLE_RGB_MATRIX_... animation modes in your config.h without worrying about exceeding the flash size limit.  You have plenty of room.
+
 #pragma once
 
 ///* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-//#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 ///* Locking resynchronize hack */
-//#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
 
 // #define RGB_DISABLE_WHEN_USB_SUSPENDED // Remove or comment this out
 
@@ -16,9 +56,9 @@
 #define SPI_MISO_PIN B14
 
 // These are the correct pin definitions, matching the driver code
-#define AW20216S_CS_PIN_1 A15  // Chip Select for driver 1
-#define AW20216S_CS_PIN_2 B9   // Chip Select for driver 2
-#define AW20216S_EN_PIN   C13  // Enable pin (both drivers use the same)
+#define AW20216S_CS_PIN_1 A15 // Chip Select for driver 1
+#define AW20216S_CS_PIN_2 B9  // Chip Select for driver 2
+#define AW20216S_EN_PIN C13   // Enable pin (both drivers use the same)
 
 #define AW20216S_DRIVER_COUNT 2
 #define DRIVER_1_LED_TOTAL 54
