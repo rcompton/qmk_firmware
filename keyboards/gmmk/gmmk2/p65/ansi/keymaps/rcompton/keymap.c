@@ -2,6 +2,8 @@
  * GMMK 2 Keymap - Custom Navigation and Grave/Escape
  * https://www.gloriousgaming.com/pages/guide-gmmk2-65
  *
+ * For some reason the only way to bootloader is to use the pinhole reset button under the space bar.
+ *
  * Features:
  *  - Caps Lock + HJKL: Arrow keys (Navigation Layer)
  *  - Esc:
