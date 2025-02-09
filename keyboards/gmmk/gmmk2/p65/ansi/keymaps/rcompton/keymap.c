@@ -6,7 +6,7 @@
  *  - Esc:
  *      Tap: Escape
  *      Shift + Esc: Tilde (~)
- *      Ctrl/Alt/GUI + Esc: Grave (`)
+ *      Ctrl + Shift + Esc: Grave (`)
  *
  *  - Right Alt:  Normal Right Alt functionality
  *  - Left Ctrl: Normal Left Ctrl functionality
@@ -18,7 +18,7 @@
      _BL,  // Base Layer
      _NAV, // Navigation Layer (activated by holding Caps Lock)
  };
- 
+
  const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* Base Layer */
      [_BL] = LAYOUT_65_ansi_blocker(
@@ -28,7 +28,7 @@
          KC_LSFT, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,          KC_UP,   KC_END,
          KC_LCTL, KC_LGUI, KC_LALT,                          KC_SPC,                                    KC_RALT, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
      ),
- 
+
      /* Navigation Layer */
      [_NAV] = LAYOUT_65_ansi_blocker(
          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -38,5 +38,5 @@
          _______, _______, _______,                          _______,                                _______, _______, _______, _______, _______
      )
  };
- 
+
  // No process_record_user needed!
