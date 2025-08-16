@@ -33,3 +33,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______,                          _______,                                _______, _______, _______, _______
     )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_RSFT:
+            if (record->event.pressed) {
+                // When Right Shift is pressed, set the whole board to white
+                rgb_matrix_set_color_all(255, 255, 255);
+            } else {
+                // When Right Shift is released, resume the last animation
+                rgb_matrix_enable_noeeprom();
+            }
+            break; // We're done with our custom action
+    }
+    // This is the crucial part:
+    // We return true so that QMK continues to process the key as a normal Right Shift.
+    return true;
+}
+
