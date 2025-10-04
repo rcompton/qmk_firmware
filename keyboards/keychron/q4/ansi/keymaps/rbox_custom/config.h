@@ -2,6 +2,8 @@
 
 #pragma once
 
+#define ACHORDION_TIMEOUT 30 // minimize chatter.
+
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
 
 #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_RAINBOW_BEACON
