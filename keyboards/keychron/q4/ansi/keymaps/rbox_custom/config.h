@@ -2,7 +2,7 @@
 
 #pragma once
 
-#define ACHORDION_TIMEOUT 50 // minimize chatter.
+#define DEBOUNCE 8
 
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
 
