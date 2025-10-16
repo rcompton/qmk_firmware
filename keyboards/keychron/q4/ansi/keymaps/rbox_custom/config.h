@@ -2,7 +2,7 @@
 
 #pragma once
 
-#define DEBOUNCE 18
+#define DEBOUNCE 20
 
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
 
